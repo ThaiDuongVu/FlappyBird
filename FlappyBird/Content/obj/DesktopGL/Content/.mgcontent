@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/audio/die.ogg</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/audio/die.wav</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/audio/hit.ogg</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/audio/hit.wav</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/audio/point.ogg</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/audio/point.wav</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/audio/swoosh.ogg</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/audio/swoosh.wav</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/audio/wing.ogg</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/audio/wing.wav</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/sprites/0.png</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/sprites/1.png</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/sprites/2.png</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/sprites/3.png</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/sprites/4.png</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/sprites/5.png</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/sprites/6.png</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/sprites/7.png</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/sprites/8.png</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/sprites/9.png</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/sprites/background-day.png</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/sprites/background-night.png</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/sprites/base.png</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/sprites/bluebird-downflap.png</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/sprites/bluebird-midflap.png</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/sprites/bluebird-upflap.png</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/sprites/gameover.png</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/sprites/message.png</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/sprites/pipe-green.png</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/sprites/pipe-red.png</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/sprites/redbird-downflap.png</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/sprites/redbird-midflap.png</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/sprites/redbird-upflap.png</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/sprites/yellowbird-downflap.png</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/sprites/yellowbird-midflap.png</File>
+    <File>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/sprites/yellowbird-upflap.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>

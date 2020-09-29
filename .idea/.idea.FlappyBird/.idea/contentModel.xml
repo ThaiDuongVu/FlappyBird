@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Duong\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Duong\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_FlappyBird.313904561.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Duong\Documents\Development\Projects\FlappyBird" t="IncludeFlat">
+      <e p="FlappyBird" t="IncludeRecursive">
+        <e p="app.manifest" t="Include" />
+        <e p="Background.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Bird.cs" t="Include" />
+        <e p="Collider.cs" t="Include" />
+        <e p="Content" t="Include">
+          <e p="audio" t="Include">
+            <e p="die.wav" t="Include" />
+            <e p="hit.wav" t="Include" />
+            <e p="point.wav" t="Include" />
+            <e p="swoosh.wav" t="Include" />
+            <e p="wing.wav" t="Include" />
+          </e>
+          <e p="bin" t="Include">
+            <e p="DesktopGL" t="Include">
+              <e p="audio" t="Include">
+                <e p="die.ogg" t="Include" />
+                <e p="die.xnb" t="Include" />
+                <e p="hit.ogg" t="Include" />
+                <e p="hit.xnb" t="Include" />
+                <e p="point.ogg" t="Include" />
+                <e p="point.xnb" t="Include" />
+                <e p="swoosh.ogg" t="Include" />
+                <e p="swoosh.xnb" t="Include" />
+                <e p="wing.ogg" t="Include" />
+                <e p="wing.xnb" t="Include" />
+              </e>
+              <e p="Content" t="Include">
+                <e p="audio" t="Include">
+                  <e p="die.ogg" t="Include" />
+                  <e p="die.xnb" t="Include" />
+                  <e p="hit.ogg" t="Include" />
+                  <e p="hit.xnb" t="Include" />
+                  <e p="point.ogg" t="Include" />
+                  <e p="point.xnb" t="Include" />
+                  <e p="swoosh.ogg" t="Include" />
+                  <e p="swoosh.xnb" t="Include" />
+                  <e p="wing.ogg" t="Include" />
+                  <e p="wing.xnb" t="Include" />
+                </e>
+                <e p="sprites" t="Include">
+                  <e p="0.xnb" t="Include" />
+                  <e p="1.xnb" t="Include" />
+                  <e p="2.xnb" t="Include" />
+                  <e p="3.xnb" t="Include" />
+                  <e p="4.xnb" t="Include" />
+                  <e p="5.xnb" t="Include" />
+                  <e p="6.xnb" t="Include" />
+                  <e p="7.xnb" t="Include" />
+                  <e p="8.xnb" t="Include" />
+                  <e p="9.xnb" t="Include" />
+                  <e p="background-day.xnb" t="Include" />
+                  <e p="background-night.xnb" t="Include" />
+                  <e p="base.xnb" t="Include" />
+                  <e p="bluebird-downflap.xnb" t="Include" />
+                  <e p="bluebird-midflap.xnb" t="Include" />
+                  <e p="bluebird-upflap.xnb" t="Include" />
+                  <e p="gameover.xnb" t="Include" />
+                  <e p="message.xnb" t="Include" />
+                  <e p="pipe-green.xnb" t="Include" />
+                  <e p="pipe-red.xnb" t="Include" />
+                  <e p="redbird-downflap.xnb" t="Include" />
+                  <e p="redbird-midflap.xnb" t="Include" />
+                  <e p="redbird-upflap.xnb" t="Include" />
+                  <e p="yellowbird-downflap.xnb" t="Include" />
+                  <e p="yellowbird-midflap.xnb" t="Include" />
+                  <e p="yellowbird-upflap.xnb" t="Include" />
+                </e>
+              </e>
+              <e p="sprites" t="Include">
+                <e p="0.xnb" t="Include" />
+                <e p="1.xnb" t="Include" />
+                <e p="2.xnb" t="Include" />
+                <e p="3.xnb" t="Include" />
+                <e p="4.xnb" t="Include" />
+                <e p="5.xnb" t="Include" />
+                <e p="6.xnb" t="Include" />
+                <e p="7.xnb" t="Include" />
+                <e p="8.xnb" t="Include" />
+                <e p="9.xnb" t="Include" />
+                <e p="background-day.xnb" t="Include" />
+                <e p="background-night.xnb" t="Include" />
+                <e p="base.xnb" t="Include" />
+                <e p="bluebird-downflap.xnb" t="Include" />
+                <e p="bluebird-midflap.xnb" t="Include" />
+                <e p="bluebird-upflap.xnb" t="Include" />
+                <e p="gameover.xnb" t="Include" />
+                <e p="message.xnb" t="Include" />
+                <e p="pipe-green.xnb" t="Include" />
+                <e p="pipe-red.xnb" t="Include" />
+                <e p="redbird-downflap.xnb" t="Include" />
+                <e p="redbird-midflap.xnb" t="Include" />
+                <e p="redbird-upflap.xnb" t="Include" />
+                <e p="yellowbird-downflap.xnb" t="Include" />
+                <e p="yellowbird-midflap.xnb" t="Include" />
+                <e p="yellowbird-upflap.xnb" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Content.mgcb" t="Include" />
+          <e p="obj" t="Include">
+            <e p="DesktopGL" t="Include">
+              <e p=".mgcontent" t="Include" />
+              <e p=".mgstats" t="Include" />
+              <e p="audio" t="Include">
+                <e p="die.mgcontent" t="Include" />
+                <e p="hit.mgcontent" t="Include" />
+                <e p="point.mgcontent" t="Include" />
+                <e p="swoosh.mgcontent" t="Include" />
+                <e p="wing.mgcontent" t="Include" />
+              </e>
+              <e p="Content" t="Include">
+                <e p=".mgcontent" t="Include" />
+                <e p=".mgstats" t="Include" />
+                <e p="audio" t="Include">
+                  <e p="die.mgcontent" t="Include" />
+                  <e p="hit.mgcontent" t="Include" />
+                  <e p="point.mgcontent" t="Include" />
+                  <e p="swoosh.mgcontent" t="Include" />
+                  <e p="wing.mgcontent" t="Include" />
+                </e>
+                <e p="sprites" t="Include">
+                  <e p="0.mgcontent" t="Include" />
+                  <e p="1.mgcontent" t="Include" />
+                  <e p="2.mgcontent" t="Include" />
+                  <e p="3.mgcontent" t="Include" />
+                  <e p="4.mgcontent" t="Include" />
+                  <e p="5.mgcontent" t="Include" />
+                  <e p="6.mgcontent" t="Include" />
+                  <e p="7.mgcontent" t="Include" />
+                  <e p="8.mgcontent" t="Include" />
+                  <e p="9.mgcontent" t="Include" />
+                  <e p="background-day.mgcontent" t="Include" />
+                  <e p="background-night.mgcontent" t="Include" />
+                  <e p="base.mgcontent" t="Include" />
+                  <e p="bluebird-downflap.mgcontent" t="Include" />
+                  <e p="bluebird-midflap.mgcontent" t="Include" />
+                  <e p="bluebird-upflap.mgcontent" t="Include" />
+                  <e p="gameover.mgcontent" t="Include" />
+                  <e p="message.mgcontent" t="Include" />
+                  <e p="pipe-green.mgcontent" t="Include" />
+                  <e p="pipe-red.mgcontent" t="Include" />
+                  <e p="redbird-downflap.mgcontent" t="Include" />
+                  <e p="redbird-midflap.mgcontent" t="Include" />
+                  <e p="redbird-upflap.mgcontent" t="Include" />
+                  <e p="yellowbird-downflap.mgcontent" t="Include" />
+                  <e p="yellowbird-midflap.mgcontent" t="Include" />
+                  <e p="yellowbird-upflap.mgcontent" t="Include" />
+                </e>
+              </e>
+              <e p="sprites" t="Include">
+                <e p="0.mgcontent" t="Include" />
+                <e p="1.mgcontent" t="Include" />
+                <e p="2.mgcontent" t="Include" />
+                <e p="3.mgcontent" t="Include" />
+                <e p="4.mgcontent" t="Include" />
+                <e p="5.mgcontent" t="Include" />
+                <e p="6.mgcontent" t="Include" />
+                <e p="7.mgcontent" t="Include" />
+                <e p="8.mgcontent" t="Include" />
+                <e p="9.mgcontent" t="Include" />
+                <e p="background-day.mgcontent" t="Include" />
+                <e p="background-night.mgcontent" t="Include" />
+                <e p="base.mgcontent" t="Include" />
+                <e p="bluebird-downflap.mgcontent" t="Include" />
+                <e p="bluebird-midflap.mgcontent" t="Include" />
+                <e p="bluebird-upflap.mgcontent" t="Include" />
+                <e p="gameover.mgcontent" t="Include" />
+                <e p="message.mgcontent" t="Include" />
+                <e p="pipe-green.mgcontent" t="Include" />
+                <e p="pipe-red.mgcontent" t="Include" />
+                <e p="redbird-downflap.mgcontent" t="Include" />
+                <e p="redbird-midflap.mgcontent" t="Include" />
+                <e p="redbird-upflap.mgcontent" t="Include" />
+                <e p="yellowbird-downflap.mgcontent" t="Include" />
+                <e p="yellowbird-midflap.mgcontent" t="Include" />
+                <e p="yellowbird-upflap.mgcontent" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="sprites" t="Include">
+            <e p="0.png" t="Include" />
+            <e p="1.png" t="Include" />
+            <e p="2.png" t="Include" />
+            <e p="3.png" t="Include" />
+            <e p="4.png" t="Include" />
+            <e p="5.png" t="Include" />
+            <e p="6.png" t="Include" />
+            <e p="7.png" t="Include" />
+            <e p="8.png" t="Include" />
+            <e p="9.png" t="Include" />
+            <e p="background-day.png" t="Include" />
+            <e p="background-night.png" t="Include" />
+            <e p="base.png" t="Include" />
+            <e p="bluebird-downflap.png" t="Include" />
+            <e p="bluebird-midflap.png" t="Include" />
+            <e p="bluebird-upflap.png" t="Include" />
+            <e p="gameover.png" t="Include" />
+            <e p="message.png" t="Include" />
+            <e p="pipe-green.png" t="Include" />
+            <e p="pipe-red.png" t="Include" />
+            <e p="redbird-downflap.png" t="Include" />
+            <e p="redbird-midflap.png" t="Include" />
+            <e p="redbird-upflap.png" t="Include" />
+            <e p="yellowbird-downflap.png" t="Include" />
+            <e p="yellowbird-midflap.png" t="Include" />
+            <e p="yellowbird-upflap.png" t="Include" />
+          </e>
+        </e>
+        <e p="FlappyBird.csproj" t="IncludeRecursive" />
+        <e p="Game.cs" t="Include" />
+        <e p="GameObject.cs" t="Include" />
+        <e p="Icon.bmp" t="Include" />
+        <e p="Icon.ico" t="Include" />
+        <e p="Microsoft.Xna.Framework.Content.ContentTypeReader" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="FlappyBird.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+      </e>
+      <e p="FlappyBird.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
