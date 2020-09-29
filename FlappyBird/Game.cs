@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -6,7 +7,7 @@ namespace FlappyBird
 {
     public class Game : Microsoft.Xna.Framework.Game
     {
-        private GraphicsDeviceManager _graphics;
+        private readonly GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
         // Screen sizes
@@ -22,6 +23,7 @@ namespace FlappyBird
 
         // Scrolling background
         private readonly Background _background = new Background("Background");
+
         // Base ground
         private readonly Background _base = new Background("Base");
 
@@ -31,8 +33,6 @@ namespace FlappyBird
         // Game over & start up messages
         private readonly GameObject _gameOverMessage = new GameObject("GameOverMessage");
         private readonly GameObject _startUpMessage = new GameObject("StartMessage");
-
-        private InputManager _inputManager = new InputManager();
 
         // Default constructor
         public Game()
@@ -85,13 +85,9 @@ namespace FlappyBird
             InputManager.GetGamePadState(PlayerIndex.One);
 
             // If escape or back button pressed then exit game
-            if (InputManager.IsKeyPressed(Keys.Escape) || InputManager.IsButtonPressed(Buttons.Start))
-            {
-                Exit();
-            }
+            if (InputManager.IsKeyPressed(Keys.Escape) || InputManager.IsButtonPressed(Buttons.Start)) Exit();
             // If space bar or A button pressed then flap bird or start game depending on the game's state
             if (InputManager.IsKeyPressed(Keys.Space) || InputManager.IsButtonPressed(Buttons.A))
-            {
                 switch (_gameState)
                 {
                     case GameState.NotStarted:
@@ -106,21 +102,20 @@ namespace FlappyBird
                     case GameState.GameOver:
                         Restart();
                         break;
-                }
-            }
 
-            // If bird touches the edge of the screeen the game over
-            if (_bird.Collider.IsEdgedVertically(ScreenHeight - (int)(_base.Size.Y / 2f), _bird.Position))
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+
+            // If bird touches the edge of the screen the game over
+            if (_bird.Collider.IsEdgedVertically(ScreenHeight - (int) (_base.Size.Y / 2f), _bird.Position))
             {
                 GameOver();
                 _bird.Position = new Vector2(-100f, -100f);
             }
 
             // If game started then drop bird to gravity
-            if (_gameState == GameState.Started)
-            {
-                _bird.Drop(gameTime);
-            }
+            if (_gameState == GameState.Started) _bird.Drop(gameTime);
 
             // Scroll background & base
             _background.Scroll(ScreenWidth);
@@ -139,14 +134,26 @@ namespace FlappyBird
             _background.Draw(gameTime, _spriteBatch, SpriteEffects.None, BackgroundLayer);
             _base.Draw(gameTime, _spriteBatch, SpriteEffects.None, BackgroundLayer);
 
-            // Draw bird only if game started
-            if (_gameState == GameState.Started) _bird.Draw(gameTime, _spriteBatch, SpriteEffects.None, ObjectLayer);
+            switch (_gameState)
+            {
+                // Draw bird only if game started
+                case GameState.Started:
+                    _bird.Draw(gameTime, _spriteBatch, SpriteEffects.None, ObjectLayer);
+                    break;
 
-            // If game over then display game over message
-            if (_gameState == GameState.GameOver) _gameOverMessage.Draw(gameTime, _spriteBatch, SpriteEffects.None, ObjectLayer);
+                // If game over then display game over message
+                case GameState.GameOver:
+                    _gameOverMessage.Draw(gameTime, _spriteBatch, SpriteEffects.None, ObjectLayer);
+                    break;
 
-            // If game not started then display startup message
-            if (_gameState == GameState.NotStarted) _startUpMessage.Draw(gameTime, _spriteBatch, SpriteEffects.None, ObjectLayer);
+                // If game not started then display startup message
+                case GameState.NotStarted:
+                    _startUpMessage.Draw(gameTime, _spriteBatch, SpriteEffects.None, ObjectLayer);
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
 
             _spriteBatch.End();
             base.Draw(gameTime);

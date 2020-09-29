@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace FlappyBird
 {
-    class InputManager : Microsoft.Xna.Framework.Game
+    internal class InputManager : Microsoft.Xna.Framework.Game
     {
         private static KeyboardState _currentKeyState;
         private static KeyboardState _previousKeyState;
@@ -47,7 +47,7 @@ namespace FlappyBird
         {
             return _currentKeyState.IsKeyDown(key) && !_previousKeyState.IsKeyDown(key);
         }
-        
+
         // If a button is pressed then let go
         public static bool IsButtonPressed(Buttons buttons)
         {

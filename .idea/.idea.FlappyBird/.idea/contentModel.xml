@@ -217,8 +217,10 @@
         <e p="FlappyBird.csproj" t="IncludeRecursive" />
         <e p="Game.cs" t="Include" />
         <e p="GameObject.cs" t="Include" />
+        <e p="GameState.cs" t="Include" />
         <e p="Icon.bmp" t="Include" />
         <e p="Icon.ico" t="Include" />
+        <e p="InputManager.cs" t="Include" />
         <e p="Microsoft.Xna.Framework.Content.ContentTypeReader" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
@@ -227,6 +229,7 @@
             </e>
           </e>
         </e>
+        <e p="Pipe.cs" t="Include" />
         <e p="Program.cs" t="Include" />
       </e>
       <e p="FlappyBird.sln" t="IncludeFlat" />

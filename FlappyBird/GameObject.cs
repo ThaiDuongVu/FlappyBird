@@ -8,14 +8,25 @@ namespace FlappyBird
     {
         // The object's render texture
         protected Texture2D _texture;
-        public Texture2D Texture => _texture;
+
+        public Texture2D Texture
+        {
+            get => _texture;
+            set => _texture = value;
+        }
 
         // The tag used for referencing objects
-        private string _tag;
-        public string Tag => _tag;
+        protected string _tag;
+
+        public string Tag
+        {
+            get => _tag;
+            set => _tag = value;
+        }
 
         // The width & height of the object
         protected Vector2 _size;
+
         public Vector2 Size
         {
             get => _size;
@@ -24,6 +35,7 @@ namespace FlappyBird
 
         // The x & y positions of the object
         protected Vector2 _position;
+
         public Vector2 Position
         {
             get => _position;
@@ -32,6 +44,7 @@ namespace FlappyBird
 
         // Whether the object is visible or not
         protected bool _isVisible = true;
+
         public bool IsVisible
         {
             get => _isVisible;
@@ -40,12 +53,30 @@ namespace FlappyBird
 
         // The origin point
         protected Vector2 _origin;
+
+        public Vector2 Origin
+        {
+            get => _origin;
+            set => _origin = value;
+        }
+
         // The rotation angles
         protected float _angle;
 
+        public float Angle
+        {
+            get => _angle;
+            set => _angle = value;
+        }
+
         // Collider used for collision detection
         protected Collider _collider;
-        public Collider Collider => _collider;
+
+        public Collider Collider
+        {
+            get => _collider;
+            set => _collider = value;
+        }
 
         // Default constructor
         public GameObject(string tag)
@@ -74,8 +105,8 @@ namespace FlappyBird
         public virtual void Draw(GameTime gameTime, SpriteBatch spriteBatch, SpriteEffects spriteEffects, int layer)
         {
             // Only draw if object is visible
-            if (_isVisible) spriteBatch.Draw(_texture, _position, null, Color.White, _angle, _origin, 1f, spriteEffects, layer);
-
+            if (IsVisible)
+                spriteBatch.Draw(Texture, Position, null, Color.White, Angle, Origin, 1f, spriteEffects, layer);
         }
     }
 }

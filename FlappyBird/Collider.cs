@@ -4,7 +4,8 @@ namespace FlappyBird
 {
     internal class Collider
     {
-        public Vector2 Size;
+        // The width & height of the collider
+        public Vector2 Size { get; set; }
 
         // Default constructor
         public Collider()
@@ -27,21 +28,15 @@ namespace FlappyBird
         // True if this collider is touching the screen's horizontal edges
         public bool IsEdgedVertically(int screenHeight, Vector2 position)
         {
-            if (position.Y - Size.Y / 2f <= 0f || position.Y + Size.Y / 2f >= screenHeight)
-            {
-                return true;
-            }
-            return false;
+            (_, float y) = position;
+            return y - Size.Y / 2f <= 0f || y + Size.Y / 2f >= screenHeight;
         }
 
         // True if this collider is touching the screen's vertical edges
         public bool IsEdgedHorizontally(int screenWidth, Vector2 position)
         {
-            if (position.X - Size.X / 2f <= 0f || position.X + Size.X / 2f >= screenWidth)
-            {
-                return true;
-            }
-            return false;
+            (float x, _) = position;
+            return x - Size.X / 2f <= 0f || x + Size.X / 2f >= screenWidth;
         }
     }
 }
