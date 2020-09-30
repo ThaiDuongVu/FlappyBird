@@ -10,7 +10,7 @@ namespace FlappyBird
         private readonly GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        private Random random = new Random();
+        private Random _random = new Random();
 
         // Screen sizes
         private const int ScreenWidth = 288;
@@ -57,7 +57,7 @@ namespace FlappyBird
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            Load();
+            LoadSprites();
             Init();
         }
 
@@ -141,14 +141,17 @@ namespace FlappyBird
         }
 
         // Load sprites textures
-        private void Load()
+        private void LoadSprites()
         {
-            if (random.Next(0, 2) == 0) _background.Load(Content, "sprites/background-day");
-            else _background.Load(Content, "sprites/background-night");
+            // Load one of the backgrounds
+            string[] backgroundTextures = new string[2] { "sprites/background-day", "sprites/background-night" };
+            _background.Load(Content, backgroundTextures[_random.Next(0, backgroundTextures.Length)]);
 
             _base.Load(Content, "sprites/base");
 
-            _bird.Load(Content, "sprites/bluebird-midflap");
+            // Load one of the birds
+            string[] birdTextures = new string[3] { "sprites/bluebird-midflap", "sprites/yellowbird-midflap", "sprites/redbird-midflap" };
+            _bird.Load(Content, birdTextures[_random.Next(0, birdTextures.Length)]);
 
             _gameOverMessage.Load(Content, "sprites/gameover");
             _startUpMessage.Load(Content, "sprites/message");
@@ -189,6 +192,8 @@ namespace FlappyBird
         private void Restart()
         {
             _gameState = GameState.NotStarted;
+
+            // Reload textures for dynamic background and birds
             LoadContent();
         }
 
