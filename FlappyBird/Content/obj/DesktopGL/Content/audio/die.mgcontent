@@ -3,7 +3,7 @@
   <SourceFile>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/audio/die.wav</SourceFile>
   <SourceTime>2019-06-08T09:53:50-04:00</SourceTime>
   <DestFile>C:/Users/Duong/Documents/Development/Projects/FlappyBird/FlappyBird/Content/bin/DesktopGL/Content/audio/die.xnb</DestFile>
-  <DestTime>2020-09-30T14:16:32.6446155-04:00</DestTime>
+  <DestTime>2020-09-30T17:34:39.2341061-04:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54-04:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>

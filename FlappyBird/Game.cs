@@ -10,7 +10,8 @@ namespace FlappyBird
         private readonly GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        private Random _random = new Random();
+        // Initialize random generator
+        private readonly Random _random = new Random();
 
         // Screen sizes
         private const int ScreenWidth = 288;
@@ -25,12 +26,16 @@ namespace FlappyBird
 
         // Scrolling background
         private readonly Background _background = new Background("Background");
+        private readonly string[] _backgroundTextures = {"sprites/background-day", "sprites/background-night"};
 
         // Base ground
         private readonly Background _base = new Background("Base");
 
         // Bird
         private readonly Bird _bird = new Bird("Bird");
+
+        private readonly string[] _birdTextures =
+            {"sprites/bluebird-midflap", "sprites/yellowbird-midflap", "sprites/redbird-midflap"};
 
         // Game over & start up messages
         private readonly GameObject _gameOverMessage = new GameObject("GameOverMessage");
@@ -64,6 +69,7 @@ namespace FlappyBird
         // Update game loop
         protected override void Update(GameTime gameTime)
         {
+            // Get keyboard & gamepad states to handle input
             InputManager.GetKeyState();
             InputManager.GetGamePadState(PlayerIndex.One);
 
@@ -91,15 +97,21 @@ namespace FlappyBird
                         throw new ArgumentOutOfRangeException();
                 }
 
+            // Update dynamic objects
+            _bird.Update();
+
             // If bird touches the edge of the screen the game over
-            if (_bird.Collider.IsEdgedVertically(ScreenHeight - (int)_base.Size.Y, _bird.Position)) GameOver();
+            if (_bird.Collider.IsEdgedVertically(ScreenHeight - (int) _base.Size.Y)) GameOver();
 
             // If game started then drop bird to gravity
             if (_gameState == GameState.Started) _bird.Drop(gameTime);
 
-            // Scroll background & base
-            _background.Scroll(ScreenWidth);
-            _base.Scroll(ScreenWidth);
+            // Scroll background & base if not game over
+            if (_gameState != GameState.GameOver)
+            {
+                _background.Scroll(ScreenWidth);
+                _base.Scroll(ScreenWidth);
+            }
 
             base.Update(gameTime);
         }
@@ -123,12 +135,13 @@ namespace FlappyBird
 
                 // If game over then display game over message
                 case GameState.GameOver:
-                    _gameOverMessage.Draw(gameTime, _spriteBatch, SpriteEffects.None, ObjectLayer);
                     _bird.Draw(gameTime, _spriteBatch, SpriteEffects.None, ObjectLayer);
+                    _gameOverMessage.Draw(gameTime, _spriteBatch, SpriteEffects.None, ObjectLayer);
                     break;
 
                 // If game not started then display startup message
                 case GameState.NotStarted:
+                    _bird.Draw(gameTime, _spriteBatch, SpriteEffects.None, ObjectLayer);
                     _startUpMessage.Draw(gameTime, _spriteBatch, SpriteEffects.None, ObjectLayer);
                     break;
 
@@ -143,15 +156,13 @@ namespace FlappyBird
         // Load sprites textures
         private void LoadSprites()
         {
-            // Load one of the backgrounds
-            string[] backgroundTextures = new string[2] { "sprites/background-day", "sprites/background-night" };
-            _background.Load(Content, backgroundTextures[_random.Next(0, backgroundTextures.Length)]);
+            // Load one of the backgrounds 
+            _background.Load(Content, _backgroundTextures[_random.Next(0, _backgroundTextures.Length)]);
 
             _base.Load(Content, "sprites/base");
 
             // Load one of the birds
-            string[] birdTextures = new string[3] { "sprites/bluebird-midflap", "sprites/yellowbird-midflap", "sprites/redbird-midflap" };
-            _bird.Load(Content, birdTextures[_random.Next(0, birdTextures.Length)]);
+            _bird.Load(Content, _birdTextures[_random.Next(0, _birdTextures.Length)]);
 
             _gameOverMessage.Load(Content, "sprites/gameover");
             _startUpMessage.Load(Content, "sprites/message");
@@ -166,11 +177,12 @@ namespace FlappyBird
             _base.Position = new Vector2(0f, ScreenHeight - _base.Size.Y / 2f);
 
             // Slightly to the left
-            _bird.Position = new Vector2(ScreenWidth / 2f - 50f, ScreenHeight / 2f);
+            _bird.Position = new Vector2(ScreenWidth / 2f - 75f, ScreenHeight / 2f);
+            _bird.Angle = 0f;
 
             // Center
-            _gameOverMessage.Position = new Vector2(ScreenWidth / 2f, ScreenHeight / 2f);
-            _startUpMessage.Position = new Vector2(ScreenWidth / 2f, ScreenHeight / 2f);
+            _gameOverMessage.Position = new Vector2(ScreenWidth / 2f, ScreenHeight / 2f - _base.Size.Y / 2f);
+            _startUpMessage.Position = new Vector2(ScreenWidth / 2f, ScreenHeight / 2f - _base.Size.Y / 2f);
         }
 
         // Set screen rendering resolution

@@ -101,6 +101,13 @@ namespace FlappyBird
             _collider = new Collider(_size);
         }
 
+        // Update object states
+        public void Update()
+        {
+            // Update collider position
+            _collider.Position = Position;
+        }
+
         // Draw game object
         public virtual void Draw(GameTime gameTime, SpriteBatch spriteBatch, SpriteEffects spriteEffects, int layer)
         {
