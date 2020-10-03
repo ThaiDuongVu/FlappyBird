@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace FlappyBird
 {
-    internal class GameObject : Microsoft.Xna.Framework.Game
+    internal class GameObject : Game
     {
         // The object's render texture
         protected Texture2D _texture;

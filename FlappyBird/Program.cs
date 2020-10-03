@@ -7,7 +7,7 @@ namespace FlappyBird
         [STAThread]
         private static void Main()
         {
-            using Game game = new Game();
+            using Main game = new Main();
             game.Run();
         }
     }

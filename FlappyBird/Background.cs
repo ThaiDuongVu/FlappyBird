@@ -20,7 +20,7 @@ namespace FlappyBird
         }
 
         // Scroll the background horizontally
-        public void Scroll(int screenWidth)
+        public virtual void Scroll(float screenWidth)
         {
             _position.X -= ScrollSpeed;
 
