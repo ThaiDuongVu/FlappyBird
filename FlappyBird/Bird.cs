@@ -7,6 +7,8 @@ namespace FlappyBird
         private const float GravityAcceleration = 9.8f;
         private float _acceleration;
 
+        private const float FlapForce = 25f;
+
         // Default constructor
         public Bird(string tag) : base(tag)
         {
@@ -27,7 +29,7 @@ namespace FlappyBird
         // Flap the bird up
         public void Flap()
         {
-            _acceleration = -GravityAcceleration * 25f;
+            _acceleration = -GravityAcceleration * FlapForce;
             _angle = -0.5f;
         }
     }

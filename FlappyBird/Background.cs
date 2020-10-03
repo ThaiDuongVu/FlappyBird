@@ -13,7 +13,7 @@ namespace FlappyBird
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, SpriteEffects spriteEffects, int layer)
         {
-            // Draw two sprites next to each other & scroll
+            // Draw two sprites next to each other
             spriteBatch.Draw(Texture, Position, null, Color.White, Angle, Origin, 1f, spriteEffects, layer);
             spriteBatch.Draw(Texture, new Vector2(Position.X + Size.X, Position.Y), null, Color.White, Angle, Origin,
                 1f, spriteEffects, layer);

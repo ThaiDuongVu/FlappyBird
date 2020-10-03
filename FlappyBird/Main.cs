@@ -35,7 +35,9 @@ namespace FlappyBird
         private Pipe _pipe2 = new Pipe("pipe2");
         private Pipe _pipe3 = new Pipe("pipe3");
         private float _pipeDistance;
+
         private readonly string[] _pipeTextures = { "sprites/pipe-green", "sprites/pipe-red" };
+        private int _pipeIndex;
 
         // Base ground
         private readonly Background _base = new Background("Base");
@@ -128,7 +130,7 @@ namespace FlappyBird
             {
                 foreach (Pipe pipe in _pipes)
                 {
-                    pipe.Scroll(ScreenWidth);
+                    pipe.Scroll(ScreenWidth, ScreenHeight, _base.Size.Y);
                 }
             }
 
@@ -191,8 +193,9 @@ namespace FlappyBird
             _pipes.Add(_pipe2);
             _pipes.Add(_pipe3);
             // Load pipe
+            _pipeIndex = _random.Next(0, 2);
             foreach (Pipe pipe in _pipes)
-                pipe.Load(Content, _pipeTextures[_random.Next(0, _pipeTextures.Length)]);
+                pipe.Load(Content, _pipeTextures[_pipeIndex]);
 
             _base.Load(Content, "sprites/base");
 
@@ -211,9 +214,13 @@ namespace FlappyBird
 
             // Low on the ground and over to the right
             _pipeDistance = (ScreenWidth - 2 * _pipe1.Size.X) / 2f + _pipe1.Size.X;
-            _pipe1.Position = new Vector2(ScreenWidth + _pipe1.Size.X / 2f, ScreenHeight - _pipe1.Size.Y / 2f);
-            _pipe2.Position = new Vector2(ScreenWidth + _pipe1.Size.X / 2f + _pipeDistance, ScreenHeight - _pipe2.Size.Y / 2f);
-            _pipe3.Position = new Vector2(ScreenWidth + _pipe1.Size.X / 2f + 2 * _pipeDistance, ScreenHeight - _pipe3.Size.Y / 2f);
+            _pipe1.Position = new Vector2(ScreenWidth + _pipe1.Size.X / 2f, 0f);
+            _pipe2.Position = new Vector2(ScreenWidth + _pipe1.Size.X / 2f + _pipeDistance, 0f);
+            _pipe3.Position = new Vector2(ScreenWidth + _pipe1.Size.X / 2f + 2 * _pipeDistance, 0f);
+            foreach (Pipe pipe in _pipes)
+            {
+                pipe.RandomizePosition(ScreenHeight, _base.Size.Y);
+            }
 
             // Low on the ground
             _base.Position = new Vector2(0f, ScreenHeight - _base.Size.Y / 2f);

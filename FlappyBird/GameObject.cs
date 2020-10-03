@@ -89,7 +89,7 @@ namespace FlappyBird
         }
 
         // Load sprite texture to this game object
-        public void Load(ContentManager content, string textureName)
+        public virtual void Load(ContentManager content, string textureName)
         {
             _texture = content.Load<Texture2D>(textureName);
 
