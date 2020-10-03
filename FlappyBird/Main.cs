@@ -66,6 +66,11 @@ namespace FlappyBird
         {
             SetScreenSize();
 
+            // Add pipes to pipe list for better tracking
+            _pipes.Add(_pipe1);
+            _pipes.Add(_pipe2);
+            _pipes.Add(_pipe3);
+
             base.Initialize();
         }
 
@@ -188,20 +193,18 @@ namespace FlappyBird
             // Load one of the backgrounds 
             _background.Load(Content, _backgroundTextures[_random.Next(0, _backgroundTextures.Length)]);
 
-            // Add pipes to pipe list for better tracking
-            _pipes.Add(_pipe1);
-            _pipes.Add(_pipe2);
-            _pipes.Add(_pipe3);
             // Load pipe
             _pipeIndex = _random.Next(0, 2);
             foreach (Pipe pipe in _pipes)
                 pipe.Load(Content, _pipeTextures[_pipeIndex]);
 
+            // Load base
             _base.Load(Content, "sprites/base");
 
             // Load one of the birds
             _bird.Load(Content, _birdTextures[_random.Next(0, _birdTextures.Length)]);
 
+            // Load the UI elements
             _gameOverMessage.Load(Content, "sprites/gameover");
             _startUpMessage.Load(Content, "sprites/message");
         }
