@@ -18,19 +18,20 @@ namespace FlappyBird
         public void Drop(GameTime gameTime)
         {
             // Drop the bird
-            _position.Y += (float) gameTime.ElapsedGameTime.TotalSeconds * _acceleration;
+            Position = new Vector2(Position.X,
+                Position.Y + (float) gameTime.ElapsedGameTime.TotalSeconds * _acceleration);
             // Increase acceleration over time
             _acceleration += GravityAcceleration;
 
             // Rotate the bird to the current velocity
-            _angle += (float) gameTime.ElapsedGameTime.TotalSeconds;
+            Angle += (float) gameTime.ElapsedGameTime.TotalSeconds;
         }
 
         // Flap the bird up
         public void Flap()
         {
             _acceleration = -GravityAcceleration * FlapForce;
-            _angle = -0.5f;
+            Angle = -0.5f;
         }
     }
 }

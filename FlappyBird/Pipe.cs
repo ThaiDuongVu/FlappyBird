@@ -11,7 +11,7 @@ namespace FlappyBird
         private const float Pi = 3.14159f;
 
         private float _gap;
-        private Random _random = new Random();
+        private readonly Random _random = new Random();
 
         // Default constructor
         public Pipe(string tag) : base(tag)
@@ -27,28 +27,29 @@ namespace FlappyBird
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, SpriteEffects spriteEffects, int layer)
         {
             spriteBatch.Draw(Texture, Position, null, Color.White, Angle, Origin, 1f, spriteEffects, layer);
-            spriteBatch.Draw(Texture, new Vector2(Position.X, Position.Y - Size.Y - _gap), null, Color.White, Angle + Pi, Origin, 1f, spriteEffects, layer);
+            spriteBatch.Draw(Texture, new Vector2(Position.X, Position.Y - Size.Y - _gap), null, Color.White,
+                Angle + Pi, Origin, 1f, spriteEffects, layer);
         }
 
         public void Scroll(float screenWidth, float screenHeight, float baseHeight)
         {
-            _position.X -= ScrollSpeed;
+            Position = new Vector2(Position.X - ScrollSpeed, Position.Y);
 
             // Reset position of scroll past the edge of the screen
-            if (Position.X < -screenWidth / 2f)
-            {
-                RandomizePosition(screenHeight, baseHeight);
-                _position.X = screenWidth + Size.X / 2f;
-            }
+            if (!(Position.X < -screenWidth / 2f)) return;
+
+            RandomizePosition(screenHeight, baseHeight);
+            Position = new Vector2(screenWidth + Size.X / 2f, Position.Y);
         }
-        
+
         // Set a random y position
         public void RandomizePosition(float screenHeight, float baseHeight)
         {
+            // Upper and lower limit of the randomize range
             float upperLimit = screenHeight - Size.Y / 2f - baseHeight / 2f;
             float lowerLimit = screenHeight;
 
-            _position.Y = ((float) _random.NextDouble()) * (lowerLimit - upperLimit) + upperLimit;
+            Position = new Vector2(Position.X, (float) _random.NextDouble() * (lowerLimit - upperLimit) + upperLimit);
         }
     }
 }

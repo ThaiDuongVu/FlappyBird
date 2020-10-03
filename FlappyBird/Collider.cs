@@ -5,39 +5,35 @@ namespace FlappyBird
     internal class Collider
     {
         // The width & height of the collider
-        private Vector2 _size;
-
-        public Vector2 Size
-        {
-            get => _size;
-            set => _size = value;
-        }
+        private Vector2 Size { get; set; }
 
         // The collider position, can be independent of attached object's position
-        private Vector2 _position;
-
-        public Vector2 Position
-        {
-            get => _position;
-            set => _position = value;
-        }
+        public Vector2 Position { get; set; }
 
         // Default constructor
         public Collider()
         {
-            _size = new Vector2(32f, 32f);
+            Size = new Vector2(32f, 32f);
         }
 
         // Optional constructor
         public Collider(Vector2 size)
         {
-            _size = size;
+            Size = size;
         }
 
-        // True if this collider is colliding with another object
+        // True if this collider is colliding with another collider
         public bool IsColliding(Collider other)
         {
-            return true;
+            // Check within x range
+            bool withinXRange = other.Position.X <= Position.X + Size.X / 2f + other.Size.X / 2f &&
+                                other.Position.X >= Position.X - Size.X / 2f - other.Size.X / 2f;
+
+            // Check within y range
+            bool withinYRange = other.Position.Y <= Position.Y + Size.Y / 2f + other.Size.Y / 2f &&
+                                other.Position.Y >= Position.Y - Size.Y / 2f - other.Size.Y / 2f;
+
+            return withinXRange && withinYRange;
         }
 
         // True if this collider is touching the screen's horizontal edges

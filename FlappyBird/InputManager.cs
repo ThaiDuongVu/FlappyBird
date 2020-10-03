@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace FlappyBird
 {
-    internal class InputManager : Microsoft.Xna.Framework.Game
+    internal class InputManager : Game
     {
         private static KeyboardState _currentKeyState;
         private static KeyboardState _previousKeyState;

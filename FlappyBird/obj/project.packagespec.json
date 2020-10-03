@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "restore": {
     "projectUniqueName": "C:\\Users\\Duong\\Documents\\Development\\Projects\\FlappyBird\\FlappyBird\\FlappyBird.csproj",
-    "projectName": "FlappyBird",
+    "projectName": "Flappy Bird",
     "projectPath": "C:\\Users\\Duong\\Documents\\Development\\Projects\\FlappyBird\\FlappyBird\\FlappyBird.csproj",
     "outputPath": "C:\\Users\\Duong\\Documents\\Development\\Projects\\FlappyBird\\FlappyBird\\obj\\",
     "projectStyle": "PackageReference",

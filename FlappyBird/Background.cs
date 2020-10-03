@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace FlappyBird
 {
-    internal class Background : GameObject
+    internal sealed class Background : GameObject
     {
         private const float ScrollSpeed = 1f;
 
@@ -20,12 +20,12 @@ namespace FlappyBird
         }
 
         // Scroll the background horizontally
-        public virtual void Scroll(float screenWidth)
+        public void Scroll(float screenWidth)
         {
-            _position.X -= ScrollSpeed;
+            Position = new Vector2(Position.X - ScrollSpeed, Position.Y);
 
             // Reset position of scroll past the edge of the screen
-            if (Position.X < -screenWidth / 2f) _position.X = screenWidth / 2f;
+            if (Position.X < -screenWidth / 2f) Position = new Vector2(screenWidth / 2f, Position.Y);
         }
     }
 }

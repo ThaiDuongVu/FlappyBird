@@ -27,16 +27,16 @@ namespace FlappyBird
 
         // Scrolling background
         private readonly Background _background = new Background("Background");
-        private readonly string[] _backgroundTextures = { "sprites/background-day", "sprites/background-night" };
+        private readonly string[] _backgroundTextures = {"sprites/background-day", "sprites/background-night"};
 
         // The list of pipes in the scene
-        private List<Pipe> _pipes = new List<Pipe>();
-        private Pipe _pipe1 = new Pipe("pipe1");
-        private Pipe _pipe2 = new Pipe("pipe2");
-        private Pipe _pipe3 = new Pipe("pipe3");
+        private readonly List<Pipe> _pipes = new List<Pipe>();
+        private readonly Pipe _pipe1 = new Pipe("pipe1");
+        private readonly Pipe _pipe2 = new Pipe("pipe2");
+        private readonly Pipe _pipe3 = new Pipe("pipe3");
         private float _pipeDistance;
 
-        private readonly string[] _pipeTextures = { "sprites/pipe-green", "sprites/pipe-red" };
+        private readonly string[] _pipeTextures = {"sprites/pipe-green", "sprites/pipe-red"};
         private int _pipeIndex;
 
         // Base ground
@@ -117,8 +117,20 @@ namespace FlappyBird
             // Update dynamic objects
             _bird.Update();
 
+            // Update pipes
+            foreach (Pipe pipe in _pipes)
+            {
+                pipe.Update();
+
+                // Scroll pipes if game started
+                if (_gameState == GameState.Started) pipe.Scroll(ScreenWidth, ScreenHeight, _base.Size.Y);
+
+                // If colliding with bird then game over
+                if (pipe.Collider.IsColliding(_bird.Collider)) GameOver();
+            }
+
             // If bird touches the edge of the screen the game over
-            if (_bird.Collider.IsEdgedVertically(ScreenHeight - (int)_base.Size.Y)) GameOver();
+            if (_bird.Collider.IsEdgedVertically(ScreenHeight - (int) _base.Size.Y)) GameOver();
 
             // If game started then drop bird to gravity
             if (_gameState == GameState.Started) _bird.Drop(gameTime);
@@ -128,15 +140,6 @@ namespace FlappyBird
             {
                 _background.Scroll(ScreenWidth);
                 _base.Scroll(ScreenWidth);
-            }
-
-            // Scroll pipe if game started
-            if (_gameState == GameState.Started)
-            {
-                foreach (Pipe pipe in _pipes)
-                {
-                    pipe.Scroll(ScreenWidth, ScreenHeight, _base.Size.Y);
-                }
             }
 
             base.Update(gameTime);
@@ -152,10 +155,7 @@ namespace FlappyBird
             _background.Draw(gameTime, _spriteBatch, SpriteEffects.None, BackgroundLayer);
 
             // Draw pipe
-            foreach (Pipe pipe in _pipes)
-            {
-                pipe.Draw(gameTime, _spriteBatch, SpriteEffects.None, BackgroundLayer);
-            }
+            foreach (Pipe pipe in _pipes) pipe.Draw(gameTime, _spriteBatch, SpriteEffects.None, BackgroundLayer);
 
             // Draw base
             _base.Draw(gameTime, _spriteBatch, SpriteEffects.None, BackgroundLayer);
@@ -220,10 +220,7 @@ namespace FlappyBird
             _pipe1.Position = new Vector2(ScreenWidth + _pipe1.Size.X / 2f, 0f);
             _pipe2.Position = new Vector2(ScreenWidth + _pipe1.Size.X / 2f + _pipeDistance, 0f);
             _pipe3.Position = new Vector2(ScreenWidth + _pipe1.Size.X / 2f + 2 * _pipeDistance, 0f);
-            foreach (Pipe pipe in _pipes)
-            {
-                pipe.RandomizePosition(ScreenHeight, _base.Size.Y);
-            }
+            foreach (Pipe pipe in _pipes) pipe.RandomizePosition(ScreenHeight, _base.Size.Y);
 
             // Low on the ground
             _base.Position = new Vector2(0f, ScreenHeight - _base.Size.Y / 2f);
