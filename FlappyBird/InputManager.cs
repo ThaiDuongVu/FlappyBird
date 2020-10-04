@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace FlappyBird
@@ -31,13 +30,13 @@ namespace FlappyBird
         }
 
         // If a key is press and hold
-        public static bool IsKeyHold(Keys key)
+        public bool IsKeyHold(Keys key)
         {
             return _currentKeyState.IsKeyDown(key);
         }
 
         // If a button is pressed and hold
-        public static bool IsButtonHold(Buttons buttons)
+        public bool IsButtonHold(Buttons buttons)
         {
             return _currentGamePadState.IsButtonDown(buttons);
         }

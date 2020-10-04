@@ -26,31 +26,33 @@ namespace FlappyBird
         private GameState _gameState = GameState.NotStarted;
 
         // Scrolling background
-        private readonly Background _background = new Background("Background");
+        private readonly Background _background = new Background();
         private readonly string[] _backgroundTextures = {"sprites/background-day", "sprites/background-night"};
 
         // The list of pipes in the scene
         private readonly List<Pipe> _pipes = new List<Pipe>();
-        private readonly Pipe _pipe1 = new Pipe("pipe1");
-        private readonly Pipe _pipe2 = new Pipe("pipe2");
-        private readonly Pipe _pipe3 = new Pipe("pipe3");
+        private readonly Pipe _pipe1 = new Pipe();
+        private readonly Pipe _pipe2 = new Pipe();
+        private readonly Pipe _pipe3 = new Pipe();
         private float _pipeDistance;
 
         private readonly string[] _pipeTextures = {"sprites/pipe-green", "sprites/pipe-red"};
         private int _pipeIndex;
 
         // Base ground
-        private readonly Background _base = new Background("Base");
+        private readonly Background _base = new Background();
 
         // Bird
-        private readonly Bird _bird = new Bird("Bird");
+        private readonly Bird _bird = new Bird();
 
         private readonly string[] _birdTextures =
             {"sprites/bluebird-midflap", "sprites/yellowbird-midflap", "sprites/redbird-midflap"};
 
         // Game over & start up messages
-        private readonly GameObject _gameOverMessage = new GameObject("GameOverMessage");
-        private readonly GameObject _startUpMessage = new GameObject("StartMessage");
+        private readonly GameObject _gameOverMessage = new GameObject();
+        private readonly GameObject _startUpMessage = new GameObject();
+
+        private int _score;
 
         // Default constructor
         public Main()
@@ -72,6 +74,53 @@ namespace FlappyBird
             _pipes.Add(_pipe3);
 
             base.Initialize();
+        }
+
+        // Load sprites textures
+        private void LoadSprites()
+        {
+            // Load one of the backgrounds 
+            _background.Load(Content, _backgroundTextures[_random.Next(0, _backgroundTextures.Length)]);
+
+            // Load pipe
+            _pipeIndex = _random.Next(0, 2);
+            foreach (Pipe pipe in _pipes)
+                pipe.Load(Content, _pipeTextures[_pipeIndex]);
+
+            // Load base
+            _base.Load(Content, "sprites/base");
+
+            // Load one of the birds
+            _bird.Load(Content, _birdTextures[_random.Next(0, _birdTextures.Length)]);
+
+            // Load the UI elements
+            _gameOverMessage.Load(Content, "sprites/gameover");
+            _startUpMessage.Load(Content, "sprites/message");
+        }
+
+        // Initialize all objects
+        private void Init()
+        {
+            // Center
+            _background.Position = new Vector2(ScreenWidth / 2f, ScreenHeight / 2f);
+
+            // Low on the ground and over to the right
+            _pipeDistance = (ScreenWidth - 2 * _pipe1.Size.X) / 2f + _pipe1.Size.X;
+            _pipe1.Position = new Vector2(ScreenWidth + _pipe1.Size.X / 2f, 0f);
+            _pipe2.Position = new Vector2(ScreenWidth + _pipe1.Size.X / 2f + _pipeDistance, 0f);
+            _pipe3.Position = new Vector2(ScreenWidth + _pipe1.Size.X / 2f + 2 * _pipeDistance, 0f);
+            foreach (Pipe pipe in _pipes) pipe.RandomizePosition(ScreenHeight, _base.Size.Y);
+
+            // Low on the ground
+            _base.Position = new Vector2(0f, ScreenHeight - _base.Size.Y / 2f);
+
+            // Slightly to the left
+            _bird.Position = new Vector2(ScreenWidth / 2f - 75f, ScreenHeight / 2f);
+            _bird.Angle = 0f;
+
+            // Center
+            _gameOverMessage.Position = new Vector2(ScreenWidth / 2f, ScreenHeight / 2f - _base.Size.Y / 2f);
+            _startUpMessage.Position = new Vector2(ScreenWidth / 2f, ScreenHeight / 2f - _base.Size.Y / 2f);
         }
 
         // Load textures and audio files
@@ -126,11 +175,17 @@ namespace FlappyBird
                 if (_gameState == GameState.Started) pipe.Scroll(ScreenWidth, ScreenHeight, _base.Size.Y);
 
                 // If colliding with bird then game over
-                if (pipe.Collider.IsColliding(_bird.Collider)) GameOver();
+                if (pipe.Collider.IsColliding(_bird.Collider) || pipe.SecondaryCollider.IsColliding(_bird.Collider)) GameOver();
             }
 
             // If bird touches the edge of the screen the game over
-            if (_bird.Collider.IsEdgedVertically(ScreenHeight - (int) _base.Size.Y)) GameOver();
+            if (_bird.Collider.IsEdgedVertically(ScreenHeight - (int)_base.Size.Y))
+            {
+                if (_bird.Position.Y > ScreenHeight / 2f)
+                {
+                    GameOver();
+                }
+            }
 
             // If game started then drop bird to gravity
             if (_gameState == GameState.Started) _bird.Drop(gameTime);
@@ -185,53 +240,6 @@ namespace FlappyBird
 
             _spriteBatch.End();
             base.Draw(gameTime);
-        }
-
-        // Load sprites textures
-        private void LoadSprites()
-        {
-            // Load one of the backgrounds 
-            _background.Load(Content, _backgroundTextures[_random.Next(0, _backgroundTextures.Length)]);
-
-            // Load pipe
-            _pipeIndex = _random.Next(0, 2);
-            foreach (Pipe pipe in _pipes)
-                pipe.Load(Content, _pipeTextures[_pipeIndex]);
-
-            // Load base
-            _base.Load(Content, "sprites/base");
-
-            // Load one of the birds
-            _bird.Load(Content, _birdTextures[_random.Next(0, _birdTextures.Length)]);
-
-            // Load the UI elements
-            _gameOverMessage.Load(Content, "sprites/gameover");
-            _startUpMessage.Load(Content, "sprites/message");
-        }
-
-        // Initialize all objects
-        private void Init()
-        {
-            // Center
-            _background.Position = new Vector2(ScreenWidth / 2f, ScreenHeight / 2f);
-
-            // Low on the ground and over to the right
-            _pipeDistance = (ScreenWidth - 2 * _pipe1.Size.X) / 2f + _pipe1.Size.X;
-            _pipe1.Position = new Vector2(ScreenWidth + _pipe1.Size.X / 2f, 0f);
-            _pipe2.Position = new Vector2(ScreenWidth + _pipe1.Size.X / 2f + _pipeDistance, 0f);
-            _pipe3.Position = new Vector2(ScreenWidth + _pipe1.Size.X / 2f + 2 * _pipeDistance, 0f);
-            foreach (Pipe pipe in _pipes) pipe.RandomizePosition(ScreenHeight, _base.Size.Y);
-
-            // Low on the ground
-            _base.Position = new Vector2(0f, ScreenHeight - _base.Size.Y / 2f);
-
-            // Slightly to the left
-            _bird.Position = new Vector2(ScreenWidth / 2f - 75f, ScreenHeight / 2f);
-            _bird.Angle = 0f;
-
-            // Center
-            _gameOverMessage.Position = new Vector2(ScreenWidth / 2f, ScreenHeight / 2f - _base.Size.Y / 2f);
-            _startUpMessage.Position = new Vector2(ScreenWidth / 2f, ScreenHeight / 2f - _base.Size.Y / 2f);
         }
 
         // Set screen rendering resolution

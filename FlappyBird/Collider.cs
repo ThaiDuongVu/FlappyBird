@@ -10,13 +10,7 @@ namespace FlappyBird
         // The collider position, can be independent of attached object's position
         public Vector2 Position { get; set; }
 
-        // Default constructor
-        public Collider()
-        {
-            Size = new Vector2(32f, 32f);
-        }
-
-        // Optional constructor
+        // Constructor
         public Collider(Vector2 size)
         {
             Size = size;

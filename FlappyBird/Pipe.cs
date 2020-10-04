@@ -10,27 +10,38 @@ namespace FlappyBird
         private const float ScrollSpeed = 1f;
         private const float Pi = 3.14159f;
 
-        private float _gap;
         private readonly Random _random = new Random();
 
-        // Default constructor
-        public Pipe(string tag) : base(tag)
-        {
-        }
+        // Gap between two pipes
+        private float _gap;
+
+        // Collider for the top pipe
+        public Collider SecondaryCollider;
 
         public override void Load(ContentManager content, string textureName)
         {
             base.Load(content, textureName);
+
             _gap = Size.Y / 2.75f;
+            SecondaryCollider = new Collider(Size);
+        }
+
+        public override void Update()
+        {
+            // Update both colliders
+            Collider.Position = Position;
+            SecondaryCollider.Position = new Vector2(Position.X, Position.Y - Size.Y - _gap);
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, SpriteEffects spriteEffects, int layer)
         {
+            // Draw the lower and upper pipe with a gap in between
             spriteBatch.Draw(Texture, Position, null, Color.White, Angle, Origin, 1f, spriteEffects, layer);
             spriteBatch.Draw(Texture, new Vector2(Position.X, Position.Y - Size.Y - _gap), null, Color.White,
                 Angle + Pi, Origin, 1f, spriteEffects, layer);
         }
 
+        // Scroll pipe past the screen
         public void Scroll(float screenWidth, float screenHeight, float baseHeight)
         {
             Position = new Vector2(Position.X - ScrollSpeed, Position.Y);
@@ -49,7 +60,7 @@ namespace FlappyBird
             float upperLimit = screenHeight - Size.Y / 2f - baseHeight / 2f;
             float lowerLimit = screenHeight;
 
-            Position = new Vector2(Position.X, (float) _random.NextDouble() * (lowerLimit - upperLimit) + upperLimit);
+            Position = new Vector2(Position.X, (float)_random.NextDouble() * (lowerLimit - upperLimit) + upperLimit);
         }
     }
 }

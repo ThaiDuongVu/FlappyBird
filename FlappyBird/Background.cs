@@ -7,10 +7,6 @@ namespace FlappyBird
     {
         private const float ScrollSpeed = 1f;
 
-        public Background(string tag) : base(tag)
-        {
-        }
-
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, SpriteEffects spriteEffects, int layer)
         {
             // Draw two sprites next to each other

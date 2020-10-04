@@ -9,11 +9,6 @@ namespace FlappyBird
 
         private const float FlapForce = 25f;
 
-        // Default constructor
-        public Bird(string tag) : base(tag)
-        {
-        }
-
         // Drop the bird by gravity
         public void Drop(GameTime gameTime)
         {
@@ -25,6 +20,12 @@ namespace FlappyBird
 
             // Rotate the bird to the current velocity
             Angle += (float) gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (Position.Y < 0f)
+            {
+                Position = new Vector2(Position.X, 0f);
+                _acceleration = 0f;
+            }
         }
 
         // Flap the bird up

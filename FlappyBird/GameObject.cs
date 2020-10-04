@@ -9,9 +9,6 @@ namespace FlappyBird
         // The object's render texture
         protected Texture2D Texture { get; private set; }
 
-        // The tag used for referencing objects
-        public string Tag { get; set; }
-
         // The width & height of the object
         public Vector2 Size { get; private set; }
 
@@ -31,13 +28,11 @@ namespace FlappyBird
         public Collider Collider { get; private set; }
 
         // Default constructor
-        public GameObject(string tag)
+        public GameObject()
         {
             // Default size and position to (0, 0)
             Size = Vector2.Zero;
             Position = Vector2.Zero;
-
-            Tag = tag;
         }
 
         // Load sprite texture to this game object
@@ -54,7 +49,7 @@ namespace FlappyBird
         }
 
         // Update object states
-        public void Update()
+        public virtual void Update()
         {
             // Update collider position
             Collider.Position = Position;
