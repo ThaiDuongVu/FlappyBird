@@ -53,6 +53,7 @@ namespace FlappyBird
         private readonly GameObject _startUpMessage = new GameObject();
 
         private int _score;
+        private ScoreDisplay _scoreDisplay = new ScoreDisplay();
 
         // Default constructor
         public Main()
@@ -96,6 +97,9 @@ namespace FlappyBird
             // Load the UI elements
             _gameOverMessage.Load(Content, "sprites/gameover");
             _startUpMessage.Load(Content, "sprites/message");
+
+            // Load all score sprites
+            _scoreDisplay.Load(Content);
         }
 
         // Initialize all objects
@@ -215,22 +219,25 @@ namespace FlappyBird
             // Draw base
             _base.Draw(gameTime, _spriteBatch, SpriteEffects.None, BackgroundLayer);
 
+            // Draw bird
+            _bird.Draw(gameTime, _spriteBatch, SpriteEffects.None, ObjectLayer);
+
             switch (_gameState)
             {
-                // Draw bird only if game started
                 case GameState.Started:
-                    _bird.Draw(gameTime, _spriteBatch, SpriteEffects.None, ObjectLayer);
+                    // Display score
+                    _scoreDisplay.Draw(_score, new Vector2(ScreenWidth / 2f, ScreenHeight / 8f), gameTime, _spriteBatch, SpriteEffects.None, ObjectLayer);
                     break;
-
-                // If game over then display game over message
+                
                 case GameState.GameOver:
-                    _bird.Draw(gameTime, _spriteBatch, SpriteEffects.None, ObjectLayer);
+                    // If game over then display game over message
                     _gameOverMessage.Draw(gameTime, _spriteBatch, SpriteEffects.None, ObjectLayer);
+                    // Display score
+                    _scoreDisplay.Draw(_score, new Vector2(ScreenWidth / 2f, ScreenHeight / 8f), gameTime, _spriteBatch, SpriteEffects.None, ObjectLayer);
                     break;
 
-                // If game not started then display startup message
                 case GameState.NotStarted:
-                    _bird.Draw(gameTime, _spriteBatch, SpriteEffects.None, ObjectLayer);
+                    // If game not started then display startup message
                     _startUpMessage.Draw(gameTime, _spriteBatch, SpriteEffects.None, ObjectLayer);
                     break;
 
@@ -262,6 +269,7 @@ namespace FlappyBird
         private void Restart()
         {
             _gameState = GameState.NotStarted;
+            _score = 0;
 
             // Reload textures for dynamic background and birds
             LoadContent();

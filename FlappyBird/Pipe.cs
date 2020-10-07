@@ -22,7 +22,7 @@ namespace FlappyBird
         {
             base.Load(content, textureName);
 
-            _gap = Size.Y / 2.75f;
+            _gap = Size.Y / 3f;
             SecondaryCollider = new Collider(Size);
         }
 
