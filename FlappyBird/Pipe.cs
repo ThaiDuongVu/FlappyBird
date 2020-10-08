@@ -18,12 +18,18 @@ namespace FlappyBird
         // Collider for the top pipe
         public Collider SecondaryCollider;
 
+        // Collider for triggering score
+        public Collider TriggerCollider;
+        public bool scoreAdded;
+
         public override void Load(ContentManager content, string textureName)
         {
             base.Load(content, textureName);
 
             _gap = Size.Y / 3f;
+
             SecondaryCollider = new Collider(Size);
+            TriggerCollider = new Collider(new Vector2(Size.X / 2f, _gap));
         }
 
         public override void Update()
@@ -31,6 +37,7 @@ namespace FlappyBird
             // Update both colliders
             Collider.Position = Position;
             SecondaryCollider.Position = new Vector2(Position.X, Position.Y - Size.Y - _gap);
+            TriggerCollider.Position = new Vector2(Position.X, Position.Y - Size.Y / 2f - _gap / 2f);
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, SpriteEffects spriteEffects, int layer)

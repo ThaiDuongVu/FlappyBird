@@ -157,7 +157,6 @@ namespace FlappyBird
 
                     case GameState.Started:
                         _bird.Flap();
-                        _score++;
                         break;
 
                     case GameState.GameOver:
@@ -181,6 +180,12 @@ namespace FlappyBird
 
                 // If colliding with bird then game over
                 if (pipe.Collider.IsColliding(_bird.Collider) || pipe.SecondaryCollider.IsColliding(_bird.Collider)) GameOver();
+
+                if (pipe.TriggerCollider.IsColliding(_bird.Collider) && !pipe.scoreAdded)
+                {
+                    _score++;
+                    pipe.scoreAdded = true;
+                }
             }
 
             // If bird touches the edge of the screen the game over
