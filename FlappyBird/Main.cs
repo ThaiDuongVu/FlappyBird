@@ -157,6 +157,7 @@ namespace FlappyBird
 
                     case GameState.Started:
                         _bird.Flap();
+                        _score++;
                         break;
 
                     case GameState.GameOver:
