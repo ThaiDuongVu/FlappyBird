@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
+using System.Collections.Generic;
 
 namespace FlappyBird
 {
@@ -27,7 +27,7 @@ namespace FlappyBird
 
         // Scrolling background
         private readonly Background _background = new Background();
-        private readonly string[] _backgroundTextures = {"sprites/background-day", "sprites/background-night"};
+        private readonly string[] _backgroundTextures = { "sprites/background-day", "sprites/background-night" };
 
         // The list of pipes in the scene
         private readonly List<Pipe> _pipes = new List<Pipe>();
@@ -36,7 +36,7 @@ namespace FlappyBird
         private readonly Pipe _pipe3 = new Pipe();
         private float _pipeDistance;
 
-        private readonly string[] _pipeTextures = {"sprites/pipe-green", "sprites/pipe-red"};
+        private readonly string[] _pipeTextures = { "sprites/pipe-green", "sprites/pipe-red" };
         private int _pipeIndex;
 
         // Base ground
@@ -52,7 +52,7 @@ namespace FlappyBird
         private readonly GameObject _gameOverMessage = new GameObject();
         private readonly GameObject _startUpMessage = new GameObject();
 
-        private int _score;
+        private int _score = 0;
         private ScoreDisplay _scoreDisplay = new ScoreDisplay();
 
         // Default constructor
@@ -234,7 +234,7 @@ namespace FlappyBird
                     // Display score
                     _scoreDisplay.Draw(_score, new Vector2(ScreenWidth / 2f, ScreenHeight / 8f), gameTime, _spriteBatch, SpriteEffects.None, ObjectLayer);
                     break;
-                
+
                 case GameState.GameOver:
                     // If game over then display game over message
                     _gameOverMessage.Draw(gameTime, _spriteBatch, SpriteEffects.None, ObjectLayer);
@@ -274,6 +274,11 @@ namespace FlappyBird
         // Restart game
         private void Restart()
         {
+            foreach (Pipe pipe in _pipes)
+            {
+                pipe.scoreAdded = false;
+            }
+
             _gameState = GameState.NotStarted;
             _score = 0;
 
@@ -284,6 +289,7 @@ namespace FlappyBird
         // Start the game
         private void Start()
         {
+            _score = 0;
             _gameState = GameState.Started;
         }
     }

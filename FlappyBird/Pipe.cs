@@ -58,6 +58,8 @@ namespace FlappyBird
 
             RandomizePosition(screenHeight, baseHeight);
             Position = new Vector2(screenWidth + Size.X / 2f, Position.Y);
+
+            scoreAdded = false;
         }
 
         // Set a random y position

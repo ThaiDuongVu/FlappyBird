@@ -14,12 +14,12 @@ namespace FlappyBird
         {
             // Drop the bird
             Position = new Vector2(Position.X,
-                Position.Y + (float) gameTime.ElapsedGameTime.TotalSeconds * _acceleration);
+                Position.Y + (float)gameTime.ElapsedGameTime.TotalSeconds * _acceleration);
             // Increase acceleration over time
             _acceleration += GravityAcceleration;
 
             // Rotate the bird to the current velocity
-            Angle += (float) gameTime.ElapsedGameTime.TotalSeconds;
+            Angle += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             if (Position.Y < 0f)
             {
