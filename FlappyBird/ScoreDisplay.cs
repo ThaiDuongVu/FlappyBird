@@ -9,18 +9,27 @@ namespace FlappyBird
         private string[] numbers = { "sprites/0", "sprites/1", "sprites/2", "sprites/3", "sprites/4", "sprites/5", "sprites/6", "sprites/7", "sprites/8", "sprites/9" };
         private Texture2D[] numberTextures;
 
-        // Load all score textures
+        /// <summary>
+        /// Load all score textures.
+        /// </summary>
+        /// <param name="content"></param>
         public void Load(ContentManager content)
         {
             numberTextures = new Texture2D[numbers.Length];
 
             for (int i = 0; i < numberTextures.Length; i++)
-            {
                 numberTextures[i] = content.Load<Texture2D>(numbers[i]);
-            }
         }
 
-        // Display score on screen
+        /// <summary>
+        /// Display score on screen.
+        /// </summary>
+        /// <param name="score">Score to display</param>
+        /// <param name="centerPosition">Center position</param>
+        /// <param name="gameTime">Elapsed game time</param>
+        /// <param name="spriteBatch">Sprite batch</param>
+        /// <param name="spriteEffects">Render effects</param>
+        /// <param name="layer">Render layer</param>
         public void Draw(int score, Vector2 centerPosition, GameTime gameTime, SpriteBatch spriteBatch, SpriteEffects spriteEffects, int layer)
         {
             Texture2D scoreTexture;
@@ -45,6 +54,11 @@ namespace FlappyBird
             }
         }
 
+        /// <summary>
+        /// Get numbers of digit of a number.
+        /// </summary>
+        /// <param name="num">Number to check</param>
+        /// <returns></returns>
         private int GetDigit(int num)
         {
             int digit = 0;

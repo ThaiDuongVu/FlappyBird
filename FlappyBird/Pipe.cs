@@ -13,7 +13,7 @@ namespace FlappyBird
         private readonly Random _random = new Random();
 
         // Gap between two pipes
-        private float _gap;
+        private float gap;
 
         // Collider for the top pipe
         public Collider SecondaryCollider;
@@ -26,29 +26,34 @@ namespace FlappyBird
         {
             base.Load(content, textureName);
 
-            _gap = Size.Y / 3f;
+            gap = Size.Y / 3f;
 
             SecondaryCollider = new Collider(Size);
-            TriggerCollider = new Collider(new Vector2(Size.X / 2f, _gap));
+            TriggerCollider = new Collider(new Vector2(Size.X / 2f, gap));
         }
 
         public override void Update()
         {
             // Update both colliders
             Collider.Position = Position;
-            SecondaryCollider.Position = new Vector2(Position.X, Position.Y - Size.Y - _gap);
-            TriggerCollider.Position = new Vector2(Position.X, Position.Y - Size.Y / 2f - _gap / 2f);
+            SecondaryCollider.Position = new Vector2(Position.X, Position.Y - Size.Y - gap);
+            TriggerCollider.Position = new Vector2(Position.X, Position.Y - Size.Y / 2f - gap / 2f);
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, SpriteEffects spriteEffects, int layer)
         {
             // Draw the lower and upper pipe with a gap in between
             spriteBatch.Draw(Texture, Position, null, Color.White, Angle, Origin, 1f, spriteEffects, layer);
-            spriteBatch.Draw(Texture, new Vector2(Position.X, Position.Y - Size.Y - _gap), null, Color.White,
+            spriteBatch.Draw(Texture, new Vector2(Position.X, Position.Y - Size.Y - gap), null, Color.White,
                 Angle + Pi, Origin, 1f, spriteEffects, layer);
         }
 
-        // Scroll pipe past the screen
+        /// <summary>
+        /// Scroll pipe past the screen.
+        /// </summary>
+        /// <param name="screenWidth">Width of current screen</param>
+        /// <param name="screenHeight">Height of current screen</param>
+        /// <param name="baseHeight">Height of base ground</param>
         public void Scroll(float screenWidth, float screenHeight, float baseHeight)
         {
             Position = new Vector2(Position.X - ScrollSpeed, Position.Y);
@@ -62,7 +67,11 @@ namespace FlappyBird
             scoreAdded = false;
         }
 
-        // Set a random y position
+        /// <summary>
+        /// Set a random y position.
+        /// </summary>
+        /// <param name="screenHeight">Height of screen</param>
+        /// <param name="baseHeight">Height of base ground</param>
         public void RandomizePosition(float screenHeight, float baseHeight)
         {
             // Upper and lower limit of the randomize range

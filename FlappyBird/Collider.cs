@@ -16,7 +16,11 @@ namespace FlappyBird
             Size = size;
         }
 
-        // True if this collider is colliding with another collider
+        /// <summary>
+        /// Returns true if this collider is colliding with another collider.
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public bool IsColliding(Collider other)
         {
             // Check within x range
@@ -30,14 +34,22 @@ namespace FlappyBird
             return withinXRange && withinYRange;
         }
 
-        // True if this collider is touching the screen's horizontal edges
+        /// <summary>
+        /// Returns true if this collider is touching the screen's horizontal edges.
+        /// </summary>
+        /// <param name="screenHeight"></param>
+        /// <returns></returns>
         public bool IsEdgedVertically(int screenHeight)
         {
             (_, float y) = Position;
             return y - Size.Y / 2f <= 0f || y + Size.Y / 2f >= screenHeight;
         }
 
-        // True if this collider is touching the screen's vertical edges
+        /// <summary>
+        /// Returns true if this collider is touching the screen's vertical edges.
+        /// </summary>
+        /// <param name="screenWidth"></param>
+        /// <returns></returns>
         public bool IsEdgedHorizontally(int screenWidth)
         {
             (float x, _) = Position;

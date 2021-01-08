@@ -7,6 +7,13 @@ namespace FlappyBird
     {
         private const float ScrollSpeed = 1f;
 
+        /// <summary>
+        /// Render background.
+        /// </summary>
+        /// <param name="gameTime">Elapsed game time</param>
+        /// <param name="spriteBatch">Sprite batch</param>
+        /// <param name="spriteEffects">Render effects</param>
+        /// <param name="layer">Render layer</param>
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, SpriteEffects spriteEffects, int layer)
         {
             // Draw two sprites next to each other
@@ -15,7 +22,10 @@ namespace FlappyBird
                 1f, spriteEffects, layer);
         }
 
-        // Scroll the background horizontally
+        /// <summary>
+        /// Scroll the background horizontally.
+        /// </summary>
+        /// <param name="screenWidth">Width of current screen</param>
         public void Scroll(float screenWidth)
         {
             Position = new Vector2(Position.X - ScrollSpeed, Position.Y);

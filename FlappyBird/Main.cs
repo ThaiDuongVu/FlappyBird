@@ -8,11 +8,11 @@ namespace FlappyBird
 {
     public class Main : Game
     {
-        private readonly GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
+        private readonly GraphicsDeviceManager graphics;
+        private SpriteBatch spriteBatch;
 
         // Initialize random generator
-        private readonly Random _random = new Random();
+        private readonly Random random = new Random();
 
         // Screen sizes
         private const int ScreenWidth = 288;
@@ -23,120 +23,134 @@ namespace FlappyBird
         private const int ObjectLayer = 1;
 
         // Current state of the game
-        private GameState _gameState = GameState.NotStarted;
+        private GameState gameState = GameState.NotStarted;
 
         // Scrolling background
-        private readonly Background _background = new Background();
-        private readonly string[] _backgroundTextures = { "sprites/background-day", "sprites/background-night" };
+        private readonly Background background = new Background();
+        private readonly string[] backgroundTextures = { "sprites/background-day", "sprites/background-night" };
 
         // The list of pipes in the scene
-        private readonly List<Pipe> _pipes = new List<Pipe>();
-        private readonly Pipe _pipe1 = new Pipe();
-        private readonly Pipe _pipe2 = new Pipe();
-        private readonly Pipe _pipe3 = new Pipe();
-        private float _pipeDistance;
+        private readonly List<Pipe> pipes = new List<Pipe>();
+        private readonly Pipe pipe1 = new Pipe();
+        private readonly Pipe pipe2 = new Pipe();
+        private readonly Pipe pipe3 = new Pipe();
+        private float pipeDistance;
 
-        private readonly string[] _pipeTextures = { "sprites/pipe-green", "sprites/pipe-red" };
-        private int _pipeIndex;
+        private readonly string[] pipeTextures = { "sprites/pipe-green", "sprites/pipe-red" };
+        private int pipeIndex;
 
         // Base ground
-        private readonly Background _base = new Background();
+        private readonly Background baseGround = new Background();
 
         // Bird
-        private readonly Bird _bird = new Bird();
+        private readonly Bird bird = new Bird();
 
-        private readonly string[] _birdTextures =
+        private readonly string[] birdTextures =
             {"sprites/bluebird-midflap", "sprites/yellowbird-midflap", "sprites/redbird-midflap"};
 
         // Game over & start up messages
-        private readonly GameObject _gameOverMessage = new GameObject();
-        private readonly GameObject _startUpMessage = new GameObject();
+        private readonly GameObject gameOverMessage = new GameObject();
+        private readonly GameObject startUpMessage = new GameObject();
 
-        private int _score = 0;
-        private ScoreDisplay _scoreDisplay = new ScoreDisplay();
+        private int score = 0;
+        private ScoreDisplay scoreDisplay = new ScoreDisplay();
 
-        // Default constructor
+        /// <summary>
+        /// Default constructor.
+        /// </summary>
         public Main()
         {
-            _graphics = new GraphicsDeviceManager(this);
+            graphics = new GraphicsDeviceManager(this);
 
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
 
-        // Initial set up
+        /// <summary>
+        /// Initial set up.
+        /// </summary>
         protected override void Initialize()
         {
             SetScreenSize();
 
             // Add pipes to pipe list for better tracking
-            _pipes.Add(_pipe1);
-            _pipes.Add(_pipe2);
-            _pipes.Add(_pipe3);
+            pipes.Add(pipe1);
+            pipes.Add(pipe2);
+            pipes.Add(pipe3);
 
             base.Initialize();
         }
 
-        // Load sprites textures
+        /// <summary>
+        /// Load sprites textures.
+        /// </summary>
         private void LoadSprites()
         {
             // Load one of the backgrounds 
-            _background.Load(Content, _backgroundTextures[_random.Next(0, _backgroundTextures.Length)]);
+            background.Load(Content, backgroundTextures[random.Next(0, backgroundTextures.Length)]);
 
             // Load pipe
-            _pipeIndex = _random.Next(0, 2);
-            foreach (Pipe pipe in _pipes)
-                pipe.Load(Content, _pipeTextures[_pipeIndex]);
+            pipeIndex = random.Next(0, 2);
+            foreach (Pipe pipe in pipes)
+                pipe.Load(Content, pipeTextures[pipeIndex]);
 
             // Load base
-            _base.Load(Content, "sprites/base");
+            baseGround.Load(Content, "sprites/base");
 
             // Load one of the birds
-            _bird.Load(Content, _birdTextures[_random.Next(0, _birdTextures.Length)]);
+            bird.Load(Content, birdTextures[random.Next(0, birdTextures.Length)]);
 
             // Load the UI elements
-            _gameOverMessage.Load(Content, "sprites/gameover");
-            _startUpMessage.Load(Content, "sprites/message");
+            gameOverMessage.Load(Content, "sprites/gameover");
+            startUpMessage.Load(Content, "sprites/message");
 
             // Load all score sprites
-            _scoreDisplay.Load(Content);
+            scoreDisplay.Load(Content);
         }
 
-        // Initialize all objects
+        /// <summary>
+        /// Initialize all objects.
+        /// </summary>
         private void Init()
         {
             // Center
-            _background.Position = new Vector2(ScreenWidth / 2f, ScreenHeight / 2f);
+            background.Position = new Vector2(ScreenWidth / 2f, ScreenHeight / 2f);
 
             // Low on the ground and over to the right
-            _pipeDistance = (ScreenWidth - 2 * _pipe1.Size.X) / 2f + _pipe1.Size.X;
-            _pipe1.Position = new Vector2(ScreenWidth + _pipe1.Size.X / 2f, 0f);
-            _pipe2.Position = new Vector2(ScreenWidth + _pipe1.Size.X / 2f + _pipeDistance, 0f);
-            _pipe3.Position = new Vector2(ScreenWidth + _pipe1.Size.X / 2f + 2 * _pipeDistance, 0f);
-            foreach (Pipe pipe in _pipes) pipe.RandomizePosition(ScreenHeight, _base.Size.Y);
+            pipeDistance = (ScreenWidth - 2 * pipe1.Size.X) / 2f + pipe1.Size.X;
+            pipe1.Position = new Vector2(ScreenWidth + pipe1.Size.X / 2f, 0f);
+            pipe2.Position = new Vector2(ScreenWidth + pipe1.Size.X / 2f + pipeDistance, 0f);
+            pipe3.Position = new Vector2(ScreenWidth + pipe1.Size.X / 2f + 2 * pipeDistance, 0f);
+            foreach (Pipe pipe in pipes)
+                pipe.RandomizePosition(ScreenHeight, baseGround.Size.Y);
 
             // Low on the ground
-            _base.Position = new Vector2(0f, ScreenHeight - _base.Size.Y / 2f);
+            baseGround.Position = new Vector2(0f, ScreenHeight - baseGround.Size.Y / 2f);
 
             // Slightly to the left
-            _bird.Position = new Vector2(ScreenWidth / 2f - 75f, ScreenHeight / 2f);
-            _bird.Angle = 0f;
+            bird.Position = new Vector2(ScreenWidth / 2f - 75f, ScreenHeight / 2f);
+            bird.Angle = 0f;
 
             // Center
-            _gameOverMessage.Position = new Vector2(ScreenWidth / 2f, ScreenHeight / 2f - _base.Size.Y / 2f);
-            _startUpMessage.Position = new Vector2(ScreenWidth / 2f, ScreenHeight / 2f - _base.Size.Y / 2f);
+            gameOverMessage.Position = new Vector2(ScreenWidth / 2f, ScreenHeight / 2f - baseGround.Size.Y / 2f);
+            startUpMessage.Position = new Vector2(ScreenWidth / 2f, ScreenHeight / 2f - baseGround.Size.Y / 2f);
         }
 
-        // Load textures and audio files
+        /// <summary>
+        /// Load textures and audio files.
+        /// </summary>
         protected override void LoadContent()
         {
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
+            spriteBatch = new SpriteBatch(GraphicsDevice);
 
             LoadSprites();
             Init();
         }
 
-        // Update game loop
+        /// <summary>
+        /// Update game loop.
+        /// </summary>
+        /// <param name="gameTime">Elapsed game time</param>
         protected override void Update(GameTime gameTime)
         {
             // Get keyboard & gamepad states to handle input
@@ -144,19 +158,19 @@ namespace FlappyBird
             InputManager.GetGamePadState(PlayerIndex.One);
 
             // If escape or back button pressed then exit game
-            if (InputManager.IsKeyPressed(Keys.Escape) || InputManager.IsButtonPressed(Buttons.Start)) Exit();
+            if (InputManager.OnKeyDown(Keys.Escape) || InputManager.OnButtonDown(Buttons.Start)) Exit();
 
             // If space bar or A button pressed then flap bird or start game depending on the game's state
-            if (InputManager.IsKeyPressed(Keys.Space) || InputManager.IsButtonPressed(Buttons.A))
-                switch (_gameState)
+            if (InputManager.OnKeyDown(Keys.Space) || InputManager.OnButtonDown(Buttons.A))
+                switch (gameState)
                 {
                     case GameState.NotStarted:
                         Start();
-                        _bird.Flap();
+                        bird.Flap();
                         break;
 
                     case GameState.Started:
-                        _bird.Flap();
+                        bird.Flap();
                         break;
 
                     case GameState.GameOver:
@@ -168,129 +182,135 @@ namespace FlappyBird
                 }
 
             // Update dynamic objects
-            _bird.Update();
+            bird.Update();
 
             // Update pipes
-            foreach (Pipe pipe in _pipes)
+            foreach (Pipe pipe in pipes)
             {
                 pipe.Update();
 
                 // Scroll pipes if game started
-                if (_gameState == GameState.Started) pipe.Scroll(ScreenWidth, ScreenHeight, _base.Size.Y);
+                if (gameState == GameState.Started) pipe.Scroll(ScreenWidth, ScreenHeight, baseGround.Size.Y);
 
                 // If colliding with bird then game over
-                if (pipe.Collider.IsColliding(_bird.Collider) || pipe.SecondaryCollider.IsColliding(_bird.Collider)) GameOver();
+                if (pipe.Collider.IsColliding(bird.Collider) || pipe.SecondaryCollider.IsColliding(bird.Collider)) GameOver();
 
-                if (pipe.TriggerCollider.IsColliding(_bird.Collider) && !pipe.scoreAdded)
+                if (pipe.TriggerCollider.IsColliding(bird.Collider) && !pipe.scoreAdded)
                 {
-                    _score++;
+                    score++;
                     pipe.scoreAdded = true;
                 }
             }
 
             // If bird touches the edge of the screen the game over
-            if (_bird.Collider.IsEdgedVertically(ScreenHeight - (int)_base.Size.Y))
+            if (bird.Collider.IsEdgedVertically(ScreenHeight - (int)baseGround.Size.Y))
             {
-                if (_bird.Position.Y > ScreenHeight / 2f)
-                {
-                    GameOver();
-                }
+                if (bird.Position.Y > ScreenHeight / 2f) GameOver();
             }
 
             // If game started then drop bird to gravity
-            if (_gameState == GameState.Started) _bird.Drop(gameTime);
+            if (gameState == GameState.Started) bird.Drop(gameTime);
 
             // Scroll background & base if not game over
-            if (_gameState != GameState.GameOver)
+            if (gameState != GameState.GameOver)
             {
-                _background.Scroll(ScreenWidth);
-                _base.Scroll(ScreenWidth);
+                background.Scroll(ScreenWidth);
+                baseGround.Scroll(ScreenWidth);
             }
 
             base.Update(gameTime);
         }
 
-        // Render game sprites
+        /// <summary>
+        /// Render game sprites.
+        /// </summary>
+        /// <param name="gameTime">Elapsed game time</param>
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
-            _spriteBatch.Begin();
+            spriteBatch.Begin();
 
             // Draw background
-            _background.Draw(gameTime, _spriteBatch, SpriteEffects.None, BackgroundLayer);
+            background.Draw(gameTime, spriteBatch, SpriteEffects.None, BackgroundLayer);
 
             // Draw pipe
-            foreach (Pipe pipe in _pipes) pipe.Draw(gameTime, _spriteBatch, SpriteEffects.None, BackgroundLayer);
+            foreach (Pipe pipe in pipes) pipe.Draw(gameTime, spriteBatch, SpriteEffects.None, BackgroundLayer);
 
             // Draw base
-            _base.Draw(gameTime, _spriteBatch, SpriteEffects.None, BackgroundLayer);
+            baseGround.Draw(gameTime, spriteBatch, SpriteEffects.None, BackgroundLayer);
 
             // Draw bird
-            _bird.Draw(gameTime, _spriteBatch, SpriteEffects.None, ObjectLayer);
+            bird.Draw(gameTime, spriteBatch, SpriteEffects.None, ObjectLayer);
 
-            switch (_gameState)
+            switch (gameState)
             {
                 case GameState.Started:
                     // Display score
-                    _scoreDisplay.Draw(_score, new Vector2(ScreenWidth / 2f, ScreenHeight / 8f), gameTime, _spriteBatch, SpriteEffects.None, ObjectLayer);
+                    scoreDisplay.Draw(score, new Vector2(ScreenWidth / 2f, ScreenHeight / 8f), gameTime, spriteBatch, SpriteEffects.None, ObjectLayer);
                     break;
 
                 case GameState.GameOver:
                     // If game over then display game over message
-                    _gameOverMessage.Draw(gameTime, _spriteBatch, SpriteEffects.None, ObjectLayer);
+                    gameOverMessage.Draw(gameTime, spriteBatch, SpriteEffects.None, ObjectLayer);
                     // Display score
-                    _scoreDisplay.Draw(_score, new Vector2(ScreenWidth / 2f, ScreenHeight / 8f), gameTime, _spriteBatch, SpriteEffects.None, ObjectLayer);
+                    scoreDisplay.Draw(score, new Vector2(ScreenWidth / 2f, ScreenHeight / 8f), gameTime, spriteBatch, SpriteEffects.None, ObjectLayer);
                     break;
 
                 case GameState.NotStarted:
                     // If game not started then display startup message
-                    _startUpMessage.Draw(gameTime, _spriteBatch, SpriteEffects.None, ObjectLayer);
+                    startUpMessage.Draw(gameTime, spriteBatch, SpriteEffects.None, ObjectLayer);
                     break;
 
                 default:
                     throw new ArgumentOutOfRangeException();
             }
 
-            _spriteBatch.End();
+            spriteBatch.End();
             base.Draw(gameTime);
         }
 
-        // Set screen rendering resolution
+        /// <summary>
+        /// Set screen rendering resolution.
+        /// </summary>
         private void SetScreenSize()
         {
-            _graphics.PreferredBackBufferWidth = ScreenWidth;
-            _graphics.PreferredBackBufferHeight = ScreenHeight;
+            graphics.PreferredBackBufferWidth = ScreenWidth;
+            graphics.PreferredBackBufferHeight = ScreenHeight;
 
             // Apply screen size buffer
-            _graphics.ApplyChanges();
+            graphics.ApplyChanges();
         }
 
-        // When player die, call game over
+        /// <summary>
+        /// When player die, call game over.
+        /// </summary>
         private void GameOver()
         {
-            _gameState = GameState.GameOver;
+            gameState = GameState.GameOver;
         }
 
-        // Restart game
+        /// <summary>
+        /// Restart game.
+        /// </summary>
         private void Restart()
         {
-            foreach (Pipe pipe in _pipes)
-            {
+            foreach (Pipe pipe in pipes)
                 pipe.scoreAdded = false;
-            }
 
-            _gameState = GameState.NotStarted;
-            _score = 0;
+            gameState = GameState.NotStarted;
+            score = 0;
 
             // Reload textures for dynamic background and birds
             LoadContent();
         }
 
-        // Start the game
+        /// <summary>
+        /// Start the game.
+        /// </summary>
         private void Start()
         {
-            _score = 0;
-            _gameState = GameState.Started;
+            score = 0;
+            gameState = GameState.Started;
         }
     }
 }

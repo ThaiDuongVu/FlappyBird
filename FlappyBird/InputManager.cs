@@ -5,52 +5,75 @@ namespace FlappyBird
 {
     internal class InputManager : Game
     {
-        private static KeyboardState _currentKeyState;
-        private static KeyboardState _previousKeyState;
+        private static KeyboardState currentKeyState;
+        private static KeyboardState previousKeyState;
 
-        private static GamePadState _currentGamePadState;
-        private static GamePadState _previousGamePadState;
+        private static GamePadState currentGamePadState;
+        private static GamePadState previousGamePadState;
 
-        // Get current keyboard state
+        /// <summary>
+        /// Get current keyboard state.
+        /// </summary>
+        /// <returns></returns>
         public static KeyboardState GetKeyState()
         {
-            _previousKeyState = _currentKeyState;
-            _currentKeyState = Keyboard.GetState();
+            previousKeyState = currentKeyState;
+            currentKeyState = Keyboard.GetState();
 
-            return _currentKeyState;
+            return currentKeyState;
         }
 
-        // Get current gamepad state
+        /// <summary>
+        /// Get current gamepad state.
+        /// </summary>
+        /// <param name="playerIndex">Gamepad index</param>
+        /// <returns></returns>
         public static GamePadState GetGamePadState(PlayerIndex playerIndex)
         {
-            _previousGamePadState = _currentGamePadState;
-            _currentGamePadState = GamePad.GetState(playerIndex);
+            previousGamePadState = currentGamePadState;
+            currentGamePadState = GamePad.GetState(playerIndex);
 
-            return _currentGamePadState;
+            return currentGamePadState;
         }
 
-        // If a key is press and hold
-        public bool IsKeyHold(Keys key)
+        /// <summary>
+        /// Returns true if a key is hold down.
+        /// </summary>
+        /// <param name="keys">Keys to check</param>
+        /// <returns></returns>
+        public bool IsKeyDown(Keys keys)
         {
-            return _currentKeyState.IsKeyDown(key);
+            return currentKeyState.IsKeyDown(keys);
         }
 
-        // If a button is pressed and hold
-        public bool IsButtonHold(Buttons buttons)
+        /// <summary>
+        /// Returns true if a button is hold down.
+        /// </summary>
+        /// <param name="buttons">Buttons to check</param>
+        /// <returns></returns>
+        public bool IsButtonDown(Buttons buttons)
         {
-            return _currentGamePadState.IsButtonDown(buttons);
+            return currentGamePadState.IsButtonDown(buttons);
         }
 
-        // If a key is pressed then let go
-        public static bool IsKeyPressed(Keys key)
+        /// <summary>
+        /// Returns true if a key is pressed then let go.
+        /// </summary>
+        /// <param name="keys">Keys to check</param>
+        /// <returns></returns>
+        public static bool OnKeyDown(Keys keys)
         {
-            return _currentKeyState.IsKeyDown(key) && !_previousKeyState.IsKeyDown(key);
+            return currentKeyState.IsKeyDown(keys) && !previousKeyState.IsKeyDown(keys);
         }
 
-        // If a button is pressed then let go
-        public static bool IsButtonPressed(Buttons buttons)
+        /// <summary>
+        /// Returns true if a button is pressed then let go.
+        /// </summary>
+        /// <param name="buttons">Buttons to check</param>
+        /// <returns></returns>
+        public static bool OnButtonDown(Buttons buttons)
         {
-            return _currentGamePadState.IsButtonDown(buttons) && !_previousGamePadState.IsButtonDown(buttons);
+            return currentGamePadState.IsButtonDown(buttons) && !previousGamePadState.IsButtonDown(buttons);
         }
     }
 }

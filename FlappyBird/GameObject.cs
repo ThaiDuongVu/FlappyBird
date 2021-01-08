@@ -27,15 +27,21 @@ namespace FlappyBird
         // Collider used for collision detection
         public Collider Collider { get; private set; }
 
-        // Default constructor
+        /// <summary>
+        /// Default constructor.
+        /// </summary>
         public GameObject()
         {
-            // Default size and position to (0, 0)
+            // Set default size and position to (0, 0)
             Size = Vector2.Zero;
             Position = Vector2.Zero;
         }
 
-        // Load sprite texture to this game object
+        /// <summary>
+        /// Load sprite texture to this game object.
+        /// </summary>
+        /// <param name="content">Content manager</param>
+        /// <param name="textureName">Path to texture</param>
         public virtual void Load(ContentManager content, string textureName)
         {
             Texture = content.Load<Texture2D>(textureName);
@@ -48,14 +54,22 @@ namespace FlappyBird
             Collider = new Collider(Size);
         }
 
-        // Update object states
+        /// <summary>
+        /// Update object states.
+        /// </summary>
         public virtual void Update()
         {
             // Update collider position
             Collider.Position = Position;
         }
 
-        // Draw game object
+        /// <summary>
+        /// Draw game object.
+        /// </summary>
+        /// <param name="gameTime">Elapsed game time</param>
+        /// <param name="spriteBatch">Sprite batch</param>
+        /// <param name="spriteEffects">Render effects</param>
+        /// <param name="layer">Render layer</param>
         public virtual void Draw(GameTime gameTime, SpriteBatch spriteBatch, SpriteEffects spriteEffects, int layer)
         {
             // Only draw if object is visible
