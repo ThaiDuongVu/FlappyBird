@@ -53,7 +53,7 @@ namespace FlappyBird
         private readonly GameObject startUpMessage = new GameObject();
 
         private int score = 0;
-        private ScoreDisplay scoreDisplay = new ScoreDisplay();
+        private ScoreDisplayer scoreDisplayer = new ScoreDisplayer();
 
         /// <summary>
         /// Default constructor.
@@ -105,7 +105,7 @@ namespace FlappyBird
             startUpMessage.Load(Content, "sprites/message");
 
             // Load all score sprites
-            scoreDisplay.Load(Content);
+            scoreDisplayer.Load(Content);
         }
 
         /// <summary>
@@ -246,14 +246,14 @@ namespace FlappyBird
             {
                 case GameState.Started:
                     // Display score
-                    scoreDisplay.Draw(score, new Vector2(ScreenWidth / 2f, ScreenHeight / 8f), gameTime, spriteBatch, SpriteEffects.None, ObjectLayer);
+                    scoreDisplayer.Draw(score, new Vector2(ScreenWidth / 2f, ScreenHeight / 8f), gameTime, spriteBatch, SpriteEffects.None, ObjectLayer);
                     break;
 
                 case GameState.GameOver:
                     // If game over then display game over message
                     gameOverMessage.Draw(gameTime, spriteBatch, SpriteEffects.None, ObjectLayer);
                     // Display score
-                    scoreDisplay.Draw(score, new Vector2(ScreenWidth / 2f, ScreenHeight / 8f), gameTime, spriteBatch, SpriteEffects.None, ObjectLayer);
+                    scoreDisplayer.Draw(score, new Vector2(ScreenWidth / 2f, ScreenHeight / 8f), gameTime, spriteBatch, SpriteEffects.None, ObjectLayer);
                     break;
 
                 case GameState.NotStarted:

@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace FlappyBird
 {
-    internal class ScoreDisplay : Game
+    internal class ScoreDisplayer : Game
     {
         private string[] numbers = { "sprites/0", "sprites/1", "sprites/2", "sprites/3", "sprites/4", "sprites/5", "sprites/6", "sprites/7", "sprites/8", "sprites/9" };
         private Texture2D[] numberTextures;

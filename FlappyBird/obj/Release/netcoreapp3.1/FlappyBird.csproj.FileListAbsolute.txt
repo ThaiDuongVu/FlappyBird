@@ -1,0 +1,59 @@
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\audio\die.ogg
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\audio\die.xnb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\audio\hit.ogg
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\audio\hit.xnb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\audio\point.ogg
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\audio\point.xnb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\audio\swoosh.ogg
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\audio\swoosh.xnb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\audio\wing.ogg
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\audio\wing.xnb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\sprites\0.xnb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\sprites\1.xnb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\sprites\2.xnb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\sprites\3.xnb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\sprites\4.xnb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\sprites\5.xnb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\sprites\6.xnb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\sprites\7.xnb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\sprites\8.xnb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\sprites\9.xnb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\sprites\background-day.xnb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\sprites\background-night.xnb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\sprites\base.xnb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\sprites\bluebird-downflap.xnb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\sprites\bluebird-midflap.xnb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\sprites\bluebird-upflap.xnb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\sprites\gameover.xnb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\sprites\message.xnb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\sprites\pipe-green.xnb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\sprites\pipe-red.xnb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\sprites\redbird-downflap.xnb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\sprites\redbird-midflap.xnb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\sprites\redbird-upflap.xnb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\sprites\yellowbird-downflap.xnb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\sprites\yellowbird-midflap.xnb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Content\sprites\yellowbird-upflap.xnb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Flappy Bird.exe
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Flappy Bird.deps.json
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Flappy Bird.runtimeconfig.json
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Flappy Bird.runtimeconfig.dev.json
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Flappy Bird.dll
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\Flappy Bird.pdb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\MonoGame.Framework.dll
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\runtimes\linux-x64\native\libSDL2-2.0.so.0
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\runtimes\linux-x64\native\libopenal.so.1
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\runtimes\osx\native\libSDL2-2.0.0.dylib
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\runtimes\osx\native\libopenal.1.dylib
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\runtimes\win-x64\native\SDL2.dll
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\runtimes\win-x64\native\soft_oal.dll
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\runtimes\win-x86\native\SDL2.dll
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\bin\Release\netcoreapp3.1\runtimes\win-x86\native\soft_oal.dll
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\obj\Release\netcoreapp3.1\FlappyBird.AssemblyInfoInputs.cache
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\obj\Release\netcoreapp3.1\FlappyBird.AssemblyInfo.cs
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\obj\Release\netcoreapp3.1\FlappyBird.csproj.CoreCompileInputs.cache
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\obj\Release\netcoreapp3.1\FlappyBird.csproj.CopyComplete
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\obj\Release\netcoreapp3.1\Flappy Bird.dll
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\obj\Release\netcoreapp3.1\Flappy Bird.pdb
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\obj\Release\netcoreapp3.1\FlappyBird.genruntimeconfig.cache
+C:\Users\Duong\Documents\Development\Projects\FlappyBird\FlappyBird\obj\Release\netcoreapp3.1\FlappyBird.csprojAssemblyReference.cache
